@@ -15,6 +15,7 @@ URL: https://github.com/datapumpernickel/Rat.db
 BugReports: https://github.com/datapumpernickel/Rat.db/issues
 Imports: 
     base64enc,
+    cachem,
     glue,
     httr2,
     jsonlite,
