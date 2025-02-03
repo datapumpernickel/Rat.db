@@ -1,2 +1,4 @@
 ^Rat\.db\.Rproj$
 ^\.Rproj\.user$
+^\.github$
+^README\.Rmd$
