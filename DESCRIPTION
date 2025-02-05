@@ -16,7 +16,9 @@ BugReports: https://github.com/datapumpernickel/Rat.db/issues
 Imports: 
     base64enc,
     cachem,
+    memoise,
     glue,
     httr2,
     jsonlite,
-    readr
+    readr,
+    rlang
