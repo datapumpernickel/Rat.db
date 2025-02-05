@@ -7,7 +7,7 @@
 #' @param end_year Numeric. End of the date range for querying data.
 #' @return An `httr2` request object.
 #' @keywords internal
-sipri_build_request <- function(verbose = FALSE){
+atdb_build_request <- function(verbose = FALSE, start_year, end_year){
 
   # Construct JSON request body
   req_body <- glue::glue(
