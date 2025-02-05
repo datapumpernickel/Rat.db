@@ -22,3 +22,7 @@ Imports:
     jsonlite,
     readr,
     rlang
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

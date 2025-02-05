@@ -40,6 +40,7 @@ The core function of `Rat.db` is `atdb_get_data()`, which retrieves arms
 transfer data from SIPRI’s ATDB.
 
 ``` r
+library(Rat.db)
 atdb_get_data(verbose = FALSE, start_year, end_year, cache = TRUE)
 ```
 
@@ -68,7 +69,8 @@ By default, `Rat.db` uses a disk-based caching system to store API
 responses. This prevents redundant queries to the SIPRI database,
 improving performance and reducing server load. However, keep in mind
 that this could prevent you from getting the most recent data, if the
-SIPRI data has been renewed. This is why caching is by default disabled.
+SIPRI data has been renewed, but you are still using cached data. This
+is why caching is by default disabled.
 
 #### Default Cache Settings:
 
