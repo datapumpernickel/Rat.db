@@ -52,6 +52,8 @@ atdb_get_data(verbose = FALSE, start_year, end_year, cache = TRUE)
 - `end_year`: Numeric. The end of the date range to query.
 - `cache`: Logical. If `TRUE`, caches the response to avoid redundant
   requests. Default is `FALSE`.
+- `tidy_cols` Logical. If TRUE, formats the column headers to a tidy
+  format. Default is `TRUE`
 
 #### Example Usage:
 
@@ -75,7 +77,7 @@ is why caching is by default disabled.
 #### Default Cache Settings:
 
 - **Maximum Cache Size**: `1GB` (1024 \* 1024^2 bytes)
-- **Maximum Cache Age**: `1 year` (60*60*24\*365 seconds)
+- **Maximum Cache Age**: `1 year` (60\*60\*24\*365 seconds)
 - **Maximum Cached Entries**: Unlimited (`Inf`)
 
 #### Changing Cache Settings:

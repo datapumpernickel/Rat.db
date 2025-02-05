@@ -55,6 +55,7 @@ atdb_get_data(verbose = FALSE, start_year, end_year, cache = TRUE)
 - `start_year`: Numeric. The start of the date range to query.
 - `end_year`: Numeric. The end of the date range to query.
 - `cache`: Logical. If `TRUE`, caches the response to avoid redundant requests. Default is `FALSE`.
+- `tidy_cols` Logical. If TRUE, formats the column headers to a tidy format. Default is `TRUE`
 
 #### Example Usage:
 
@@ -72,7 +73,7 @@ By default, `Rat.db` uses a disk-based caching system to store API responses. Th
 
 #### Default Cache Settings:
 - **Maximum Cache Size**: `1GB` (1024 * 1024^2 bytes)
-- **Maximum Cache Age**: `1 year` (60*60*24*365 seconds)
+- **Maximum Cache Age**: `1 year` (60\*60\*24\*365 seconds)
 - **Maximum Cached Entries**: Unlimited (`Inf`)
 
 #### Changing Cache Settings:
@@ -101,6 +102,7 @@ cachem::cache_disk(dir = tools::R_user_dir('Rat.db', which = 'cache'))$destroy()
 
 
 ## 📝 Sources and Methods 
+
 - Always verify a few data points manually on the SIPRI website.
 - The dataset may have limitations; consult the SIPRI [**Sources and Methods**](https://www.sipri.org/databases/armstransfers/sources-and-methods) for details.
 - TIV values are not comparable to actual prices of weapons, SIPRI writes: *SIPRI TIV figures do not represent sales prices for arms transfers. They should therefore not be directly compared with gross domestic product (GDP), military expenditure, sales values or the financial value of export licences in an attempt to measure the economic burden of arms imports or the economic benefits of exports. They are best used as the raw data for calculating trends in international arms transfers over periods of time, global percentages for suppliers and recipients, and percentages for the volume of transfers to or from particular states.*

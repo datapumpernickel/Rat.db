@@ -42,6 +42,7 @@ atdb_get_data(verbose = FALSE, start_year, end_year, cache = TRUE)
 - `start_year`: Numeric. The start of the date range to query.
 - `end_year`: Numeric. The end of the date range to query.
 - `cache`: Logical. If `TRUE`, caches the response to avoid redundant requests. Default is `FALSE`.
+- `tidy_cols` Logical. If TRUE, formats the column headers to a tidy format. Default is `TRUE`
 
 #### Example Usage:
 
