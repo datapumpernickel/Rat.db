@@ -17,7 +17,6 @@
 atdb_get_data <- function(verbose = FALSE,
                           start_year,
                           end_year,
-                          footnotes = FALSE,
                           cache = TRUE) {
 
 
@@ -41,11 +40,11 @@ atdb_get_data <- function(verbose = FALSE,
 
   if(cache){
     resp <- atdb_perform_request_cached(req)
-    data <- atdb_process_response_cached(resp, verbose)
+    data <- atdb_process_response_cached(resp)
 
   } else {
     resp <- atdb_perform_request(req)
-    data <- atdb_process_response(resp, verbose)
+    data <- atdb_process_response(resp)
   }
 
   return(data)
