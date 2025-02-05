@@ -2,3 +2,9 @@ url: ~
 template:
   bootstrap: 5
 
+navbar:
+  components:
+    intro:
+      text: "Get Started"
+      href: articles/Ratdb.html
+

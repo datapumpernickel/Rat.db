@@ -9,6 +9,8 @@
 #' @param end_year Numeric. End of date range to query.
 #' @param cache Logical. If TRUE, caches the response and processed
 #' data to avoid re-querying. Default is FALSE
+#' @param tidy_cols Logical. If TRUE, formats the column headers to a tidy
+#' format. Default is TRUE
 #'
 #' @return A tibble containing the requested data.
 #'
@@ -17,7 +19,8 @@
 atdb_get_data <- function(verbose = FALSE,
                           start_year,
                           end_year,
-                          cache = FALSE) {
+                          cache = FALSE,
+                          tidy_cols = TRUE) {
 
 
   if(!rlang::is_bool(verbose)){
@@ -40,11 +43,11 @@ atdb_get_data <- function(verbose = FALSE,
 
   if(cache){
     resp <- atdb_perform_request_cached(req)
-    data <- atdb_process_response_cached(resp)
+    data <- atdb_process_response_cached(resp, tidy_cols)
 
   } else {
     resp <- atdb_perform_request(req)
-    data <- atdb_process_response(resp)
+    data <- atdb_process_response(resp, tidy_cols)
   }
 
   return(data)

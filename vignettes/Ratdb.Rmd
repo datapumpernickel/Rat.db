@@ -1,5 +1,5 @@
 ---
-title: "Ratdb"
+title: "Get started"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Ratdb}
@@ -85,41 +85,3 @@ You can also run `destroy()` to fully delete the cache. Note however, this requi
 ```{r, eval = FALSE}
 cachem::cache_disk(dir = tools::R_user_dir('Rat.db', which = 'cache'))$destroy()
 ```
-
-
-## 📝 Sources and Methods 
-- Always verify a few data points manually on the SIPRI website.
-- The dataset may have limitations; consult the SIPRI [**Sources and Methods**](https://www.sipri.org/databases/armstransfers/sources-and-methods) for details.
-- TIV values are not comparable to actual prices of weapons, SIPRI writes: *SIPRI TIV figures do not represent sales prices for arms transfers. They should therefore not be directly compared with gross domestic product (GDP), military expenditure, sales values or the financial value of export licences in an attempt to measure the economic burden of arms imports or the economic benefits of exports. They are best used as the raw data for calculating trends in international arms transfers over periods of time, global percentages for suppliers and recipients, and percentages for the volume of transfers to or from particular states.*
-
-## 🔒 Copyright 
-
-The Stockholm International Peace Research Institute limits the copying and 
-redistribution of its data to the following two use-cases: 
-
-* the excerption of SIPRI copyrighted material for such purposes as criticism, 
-comment, news reporting, teaching, scholarship or research in which the use 
-is for non-commercial purposes
-* the reproduction of less than 10 per cent of a published data set. 
-
-Hence, this package does **not** contain any SIPRI data itself. It merely 
-automatizes the access through the website, by making the corresponding POST 
-request and cleaning the resulting xlsx file into tidy formats.
-
-## 🤝 Citation 
-
-Please make sure to cite SIPRI when using their data with: 
-
-*Information from the Stockholm International Peace Research Institute (SIPRI) Arms Transfers Database*
-
-
-You can get a citation for the package with: 
-
-
-```{r citation, eval = F}
-citation('Rat.db')
-```
-
----
-
-For more information, refer to the [SIPRI ATDB website](https://armstransfers.sipri.org/ArmsTransfer/).

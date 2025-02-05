@@ -4,10 +4,13 @@
 \alias{atdb_process_response}
 \title{Process SIPRI ATDB Response}
 \usage{
-atdb_process_response(resp)
+atdb_process_response(resp, tidy_cols)
 }
 \arguments{
 \item{resp}{An \code{httr2} response object returned by \code{atdb_perform_request()}.}
+
+\item{tidy_cols}{Logical. If TRUE formats the columns of the dataset
+to a tidy format. Default: TRUE.}
 }
 \value{
 A tibble containing the processed SIPRI arms transfer data.

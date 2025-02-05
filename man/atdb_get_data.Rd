@@ -4,7 +4,13 @@
 \alias{atdb_get_data}
 \title{Get data from SIPRI Arms Transfer Database (ATDB)}
 \usage{
-atdb_get_data(verbose = FALSE, start_year, end_year, cache = FALSE)
+atdb_get_data(
+  verbose = FALSE,
+  start_year,
+  end_year,
+  cache = FALSE,
+  tidy_cols = TRUE
+)
 }
 \arguments{
 \item{verbose}{Logical. If TRUE, prints additional details about the query
@@ -16,6 +22,9 @@ process. Default is FALSE.}
 
 \item{cache}{Logical. If TRUE, caches the response and processed
 data to avoid re-querying. Default is FALSE}
+
+\item{tidy_cols}{Logical. If TRUE, formats the column headers to a tidy
+format. Default is TRUE}
 }
 \value{
 A tibble containing the requested data.
