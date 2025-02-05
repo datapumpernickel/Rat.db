@@ -4,7 +4,7 @@
 \alias{atdb_get_data}
 \title{Get data from SIPRI Arms Transfer Database (ATDB)}
 \usage{
-atdb_get_data(verbose = FALSE, start_year, end_year, cache = TRUE)
+atdb_get_data(verbose = FALSE, start_year, end_year, cache = FALSE)
 }
 \arguments{
 \item{verbose}{Logical. If TRUE, prints additional details about the query
@@ -15,7 +15,7 @@ process. Default is FALSE.}
 \item{end_year}{Numeric. End of date range to query.}
 
 \item{cache}{Logical. If TRUE, caches the response and processed
-data to avoid re-querying. Default is TRUE.}
+data to avoid re-querying. Default is FALSE}
 }
 \value{
 A tibble containing the requested data.

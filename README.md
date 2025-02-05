@@ -1,9 +1,6 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-{r, include = FALSE} knitr::opts_chunk\$set( collapse = TRUE, comment =
-“\#\>”, fig.path = “man/figures/README-”, out.width = “100%” )
-
 # Rat.db
 
 <!-- badges: start -->
@@ -35,14 +32,12 @@ You can install the development version of Rat.db from
 devtools::install_github("datapumpernickel/Rat.db")
 ```
 
-## 📌 Using `Rat.db`
+## 💲🔁️ Usage
 
 ### Retrieving Arms Transfer Data
 
 The core function of `Rat.db` is `atdb_get_data()`, which retrieves arms
 transfer data from SIPRI’s ATDB.
-
-#### Function Signature
 
 ``` r
 atdb_get_data(verbose = FALSE, start_year, end_year, cache = TRUE)
@@ -55,7 +50,7 @@ atdb_get_data(verbose = FALSE, start_year, end_year, cache = TRUE)
 - `start_year`: Numeric. The start of the date range to query.
 - `end_year`: Numeric. The end of the date range to query.
 - `cache`: Logical. If `TRUE`, caches the response to avoid redundant
-  requests. Default is `TRUE`.
+  requests. Default is `FALSE`.
 
 #### Example Usage:
 
@@ -64,14 +59,16 @@ atdb_get_data(verbose = FALSE, start_year, end_year, cache = TRUE)
 arms_data <- atdb_get_data(start_year = 2000, end_year = 2020)
 
 # Retrieve data without using cache
-arms_data_no_cache <- atdb_get_data(start_year = 2000, end_year = 2020, cache = FALSE)
+arms_data_no_cache <- atdb_get_data(start_year = 2000, end_year = 2020, cache = TRUE)
 ```
 
-### 🗄️ Caching Behavior
+## 🗄️ Caching Behavior
 
 By default, `Rat.db` uses a disk-based caching system to store API
 responses. This prevents redundant queries to the SIPRI database,
-improving performance and reducing server load.
+improving performance and reducing server load. However, keep in mind
+that this could prevent you from getting the most recent data, if the
+SIPRI data has been renewed. This is why caching is by default disabled.
 
 #### Default Cache Settings:
 
@@ -90,31 +87,72 @@ Sys.setenv(RATDB_CACHE_MAX_AGE = "60*60*24*180")  # Set max cache age to 180 day
 Sys.setenv(RATDB_CACHE_MAX_N = "500")             # Limit cache to 500 entries
 ```
 
-### Clearing the Cache
+#### Clearing the Cache
 
-If needed, users can manually clear the cache by running:
+If needed, users can manually prune the cache by running:
 
 ``` r
 cachem::cache_disk(dir = tools::R_user_dir('Rat.db', which = 'cache'))$prune()
 ```
 
 This will remove expired entries, ensuring that outdated data is not
-used in queries.
+used in queries. However, this also happens automatically with every
+request where `cache = TRUE`.
 
-### Notes on Data Validity
+You can also run `destroy()` to fully delete the cache. Note however,
+this requires a session restart to work with the package again
+afterwards.
+
+``` r
+cachem::cache_disk(dir = tools::R_user_dir('Rat.db', which = 'cache'))$destroy()
+```
+
+## 📝 Sources and Methods
 
 - Always verify a few data points manually on the SIPRI website.
-- The dataset may have limitations; consult the SIPRI **Sources and
-  Methods** for details.
+- The dataset may have limitations; consult the SIPRI [**Sources and
+  Methods**](https://www.sipri.org/databases/armstransfers/sources-and-methods)
+  for details.
+- TIV values are not comparable to actual prices of weapons, SIPRI
+  writes: *SIPRI TIV figures do not represent sales prices for arms
+  transfers. They should therefore not be directly compared with gross
+  domestic product (GDP), military expenditure, sales values or the
+  financial value of export licences in an attempt to measure the
+  economic burden of arms imports or the economic benefits of exports.
+  They are best used as the raw data for calculating trends in
+  international arms transfers over periods of time, global percentages
+  for suppliers and recipients, and percentages for the volume of
+  transfers to or from particular states.*
 
-### Additional Considerations
+## 🔒 Copyright
 
-- **Rate Limits**: The SIPRI API may enforce rate limits. If
-  experiencing issues, consider adding delays between queries.
-- **Data Processing**: The retrieved data is automatically processed
-  into a structured `tibble`, making it easier to analyze in R.
+The Stockholm International Peace Research Institute limits the copying
+and redistribution of its data to the following two use-cases:
+
+- the excerption of SIPRI copyrighted material for such purposes as
+  criticism, comment, news reporting, teaching, scholarship or research
+  in which the use is for non-commercial purposes
+- the reproduction of less than 10 per cent of a published data set.
+
+Hence, this package does **not** contain any SIPRI data itself. It
+merely automatizes the access through the website, by making the
+corresponding POST request and cleaning the resulting xlsx file into
+tidy formats.
+
+## 🤝 Citation
+
+Please make sure to cite SIPRI when using their data with:
+
+*Information from the Stockholm International Peace Research Institute
+(SIPRI) Arms Transfers Database*
+
+You can get a citation for the package with:
+
+``` r
+citation('Rat.db')
+```
 
 ------------------------------------------------------------------------
 
 For more information, refer to the [SIPRI ATDB
-website](https://www.sipri.org/databases/milex).
+website](https://armstransfers.sipri.org/ArmsTransfer/).

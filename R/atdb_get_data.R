@@ -8,7 +8,7 @@
 #' @param start_year Numeric. Start of date range to query.
 #' @param end_year Numeric. End of date range to query.
 #' @param cache Logical. If TRUE, caches the response and processed
-#' data to avoid re-querying. Default is TRUE.
+#' data to avoid re-querying. Default is FALSE
 #'
 #' @return A tibble containing the requested data.
 #'
@@ -17,7 +17,7 @@
 atdb_get_data <- function(verbose = FALSE,
                           start_year,
                           end_year,
-                          cache = TRUE) {
+                          cache = FALSE) {
 
 
   if(!rlang::is_bool(verbose)){
