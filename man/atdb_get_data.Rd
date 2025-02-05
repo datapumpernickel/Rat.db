@@ -4,13 +4,7 @@
 \alias{atdb_get_data}
 \title{Get data from SIPRI Arms Transfer Database (ATDB)}
 \usage{
-atdb_get_data(
-  verbose = FALSE,
-  start_year,
-  end_year,
-  footnotes = FALSE,
-  cache = TRUE
-)
+atdb_get_data(verbose = FALSE, start_year, end_year, cache = TRUE)
 }
 \arguments{
 \item{verbose}{Logical. If TRUE, prints additional details about the query
