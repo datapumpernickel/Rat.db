@@ -19,7 +19,7 @@ atdb_process_response <- function(resp, tidy_cols) {
     readr::read_csv(skip = 11, show_col_types = FALSE) # Skip SIPRI metadata rows
 
 
-  atdb_pretty_cols <- comtradr::atdb_pretty_cols
+  atdb_pretty_cols <- Rat.db::atdb_pretty_cols
 
   if (tidy_cols) {
 

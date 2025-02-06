@@ -22,9 +22,7 @@ atdb_build_request <- function(verbose = FALSE, start_year, end_year){
   # Build request
   req <- httr2::request("https://atbackend.sipri.org/api/p/trades/trade-register-csv/") |>
     httr2::req_method("POST") |>
-    httr2::req_headers(
-      "X-Powered-By" = "Rat.db (R package)"
-    ) |>
+    httr2::req_user_agent("Rat.db (https://github.com/datapumpernickel/Rat.db)") |>
     httr2::req_body_raw(req_body, type = "application/json")
 
 
