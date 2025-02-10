@@ -14,21 +14,34 @@
                               max_age = max_age,
                               max_n = max_n)
 
-  atdb_perform_request_cached <- memoise::memoise(atdb_perform_request,
-                                                   cache = cache)
+  env <- rlang::ns_env("Rat.db")
 
-  assign(x = "atdb_perform_request_cached",
-         value = atdb_perform_request_cached,
-         envir = rlang::ns_env("Rat.db"))
+  # Unlock and reassign atdb_perform_request_cached
+  if (exists("atdb_perform_request_cached", envir = env)) {
+    if (bindingIsLocked("atdb_perform_request_cached", env)) {
+      unlockBinding("atdb_perform_request_cached", env)
+    }
+  }
+  atdb_perform_request_cached <- memoise::memoise(atdb_perform_request, cache = cache)
+  assign("atdb_perform_request_cached", atdb_perform_request_cached, envir = env)
+  lockBinding("atdb_perform_request_cached", env)  # Re-lock after assignment
 
-  atdb_process_response_cached <- memoise::memoise(atdb_process_response,
-                                                    cache = cache)
+  # Unlock and reassign atdb_process_response_cached
+  if (exists("atdb_process_response_cached", envir = env)) {
+    if (bindingIsLocked("atdb_process_response_cached", env)) {
+      unlockBinding("atdb_process_response_cached", env)
+    }
+  }
+  atdb_process_response_cached <- memoise::memoise(atdb_process_response, cache = cache)
+  assign("atdb_process_response_cached", atdb_process_response_cached, envir = env)
+  lockBinding("atdb_process_response_cached", env)  # Re-lock after assignment
 
-  assign(x = "atdb_process_response_cached",
-         value = atdb_process_response_cached,
-         envir = rlang::ns_env("Rat.db"))
-
-  assign(x = "cache",
-         value = cache,
-         envir = rlang::ns_env("Rat.db"))
+  # Unlock and reassign cache
+  if (exists("cache", envir = env)) {
+    if (bindingIsLocked("cache", env)) {
+      unlockBinding("cache", env)
+    }
+  }
+  assign("cache", cache, envir = env)
+  lockBinding("cache", env)  # Re-lock after assignment
 }
