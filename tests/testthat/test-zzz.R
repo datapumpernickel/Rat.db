@@ -59,6 +59,18 @@ testthat::test_that("test .onLoad", {
                             60 * 24 * 365)
         max_n <- ifelse(nzchar(max_n_env), eval(parse(text = max_n_env)), Inf)
         library(Rat.db)
+        env <- rlang::ns_env("Rat.db")
+
+        # Unlock bindings for testing purposes
+        if (exists("atdb_perform_request_cached", envir = env) && bindingIsLocked("atdb_perform_request_cached", env)) {
+          unlockBinding("atdb_perform_request_cached", env)
+        }
+        if (exists("atdb_process_response_cached", envir = env) && bindingIsLocked("atdb_process_response_cached", env)) {
+          unlockBinding("atdb_process_response_cached", env)
+        }
+        if (exists("cache", envir = env) && bindingIsLocked("cache", env)) {
+          unlockBinding("cache", env)
+        }
         Rat.db:::.onLoad(libname = "Rat.db", pkgname = "Rat.db")
         testthat::expect_equal(Rat.db:::cache$info()$max_size, max_size)
         testthat::expect_equal(Rat.db:::cache$info()$max_age, max_age)
@@ -80,6 +92,18 @@ testthat::test_that("test .onLoad", {
                             60 * 24 * 365)
         max_n <- ifelse(nzchar(max_n_env), eval(parse(text = max_n_env)), Inf)
         pkgload::load_all()
+        env <- rlang::ns_env("Rat.db")
+
+        # Unlock bindings for testing purposes
+        if (exists("atdb_perform_request_cached", envir = env) && bindingIsLocked("atdb_perform_request_cached", env)) {
+          unlockBinding("atdb_perform_request_cached", env)
+        }
+        if (exists("atdb_process_response_cached", envir = env) && bindingIsLocked("atdb_process_response_cached", env)) {
+          unlockBinding("atdb_process_response_cached", env)
+        }
+        if (exists("cache", envir = env) && bindingIsLocked("cache", env)) {
+          unlockBinding("cache", env)
+        }
         Rat.db:::.onLoad(libname = "Rat.db", pkgname = "Rat.db")
         testthat::expect_equal(Rat.db:::cache$info()$max_size, max_size)
         testthat::expect_equal(Rat.db:::cache$info()$max_age, max_age)
