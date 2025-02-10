@@ -24,6 +24,8 @@ Imports:
     rlang,
     purrr
 Suggests: 
+    callr,
+    fs,
     httptest2,
     knitr,
     rmarkdown,

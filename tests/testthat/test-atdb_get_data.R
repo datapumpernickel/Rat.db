@@ -30,12 +30,12 @@ httptest2::with_mock_dir("test_data", simplify = FALSE, {
   })
 
   test_that("Invalid arguments are rejected", {
-    expect_error(atdb_get_data(start_year = "not_a_number", end_year = 2020))
+    expect_error(atdb_get_data(start_year = "not_a_number", end_year = 2001))
     expect_error(atdb_get_data(start_year = 2020, end_year = "not_a_number"))
     expect_error(atdb_get_data(start_year = 2025, end_year = 2000)) # Reverse order
-    expect_error(atdb_get_data(start_year = 2000, end_year = 2020, verbose = "not_logical"))
-    expect_error(atdb_get_data(start_year = 2000, end_year = 2020, cache = "not_logical"))
-    expect_error(atdb_get_data(start_year = 2000, end_year = 2020, tidy_cols = "not_logical"))
+    expect_error(atdb_get_data(start_year = 2000, end_year = 2001, verbose = "not_logical"))
+    expect_error(atdb_get_data(start_year = 2000, end_year = 2001, cache = "not_logical"))
+    expect_error(atdb_get_data(start_year = 2000, end_year = 2001, tidy_cols = "not_logical"))
   })
 
   test_that("Returned data includes expected values", {
