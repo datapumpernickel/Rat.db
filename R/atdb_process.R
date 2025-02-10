@@ -16,7 +16,7 @@ atdb_process_response <- function(resp, tidy_cols) {
     (\(x) x[["bytes"]])() |>
     base64enc::base64decode() |>
     rawToChar() |>
-    readr::read_csv(skip = 11, show_col_types = FALSE) # Skip SIPRI metadata rows
+    readr::read_csv(skip = 11, show_col_types = FALSE) # Skip SIPRI metadata
 
 
   atdb_pretty_cols <- Rat.db::atdb_pretty_cols
