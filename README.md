@@ -6,6 +6,8 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/datapumpernickel/Rat.db/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/datapumpernickel/Rat.db/actions/workflows/R-CMD-check.yaml)
+
+[![codecov](https://codecov.io/gh/datapumpernickel/Rat.db/graph/badge.svg?token=J3JZD1O6AQ)](https://codecov.io/gh/datapumpernickel/Rat.db)
 <!-- badges: end -->
 
 The goal of Rat.db is to make it easy to query the arms transfer
